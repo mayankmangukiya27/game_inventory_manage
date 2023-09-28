@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "421364930107",
+    "project_id": "gameinventory-47617",
+    "storage_bucket": "gameinventory-47617.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421364930107:android:cc1ab5aa16b710f421ae1e",
+        "android_client_info": {
+          "package_name": "com.example.game_inventory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKwzWURdrhGz_MdsIEGjE9yAHBQP2Uh-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
