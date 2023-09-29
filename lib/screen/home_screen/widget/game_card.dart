@@ -26,7 +26,6 @@ class GameCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            // height: 130,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
             ),
@@ -51,7 +50,7 @@ class GameCard extends StatelessWidget {
                 const SizedBox(height: 2),
                 Text(
                   gameModel.genre ?? "",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white),
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white),
                 ),
               ],
             ),

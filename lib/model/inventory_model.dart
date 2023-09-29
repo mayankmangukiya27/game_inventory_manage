@@ -12,9 +12,9 @@ class InventoryModel {
 
   InventoryModel.fromJson(Map<String, dynamic> json) {
     dateTime = json['dateTime'];
-    img = json['img'];
+    img = json['image'];
     qty = json['qty'];
-    cat = json['cat'];
+    cat = json['category'];
     name = json['name'];
     gameId = json['id'];
     isUsed = json['isUsed'];

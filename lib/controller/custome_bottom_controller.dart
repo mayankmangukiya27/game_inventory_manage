@@ -5,5 +5,5 @@ import 'package:get/get.dart';
 
 class CustomBottomBarController extends GetxController {
   RxInt currentIndex = 1.obs;
-  var pageList = [InventoryScreen(), HomeScreen(), ProfileScreen()];
+  var pageList = [const InventoryScreen(), const HomeScreen(), ProfileScreen()];
 }

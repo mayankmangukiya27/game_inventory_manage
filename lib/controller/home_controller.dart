@@ -7,22 +7,34 @@ import 'package:game_inventory/constants/api_constants.dart';
 import 'package:game_inventory/constants/api_service.dart';
 import 'package:game_inventory/model/game_model.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {
-  RxInt qty = 1.obs;
+  RxInt gameQty = 1.obs;
+  RxBool isLoading = false.obs;
   RxList<GameModel> gamesList = <GameModel>[].obs;
   RxList<GameModel> duplicate = <GameModel>[].obs;
   CollectionReference users = FirebaseFirestore.instance.collection('users');
+  String inId = "";
 
   Api api = Api();
   getAllGames() async {
+    duplicate.clear();
+    gamesList.clear();
+    isLoading.value = true;
     var response = await api.get(ApiConstants.gameListUrl);
     if (response.statusCode == 200) {
       for (var game in response.data) {
         gamesList.add(GameModel.fromJson(game));
         duplicate.value = gamesList;
+        isLoading.value = false;
       }
+    } else {
+      Get.showSnackbar(GetSnackBar(
+        isDismissible: true,
+        message: response.statusCode,
+        duration: const Duration(seconds: 3),
+      ));
+      isLoading.value = false;
     }
   }
 
@@ -33,12 +45,12 @@ class HomeController extends GetxController {
   }
 
   increment() {
-    qty++;
+    gameQty++;
   }
 
   decrement() {
-    if (qty > 1) {
-      qty--;
+    if (gameQty > 1) {
+      gameQty--;
     }
   }
 
@@ -49,7 +61,7 @@ class HomeController extends GetxController {
     if (inventroryQS.docs.isNotEmpty) {
       await users.doc(currentUser?.uid).collection("inventory").doc(inventroryQS.docs[0].id).update({
         "isUsed": false,
-        "qty": qty.value + (inventroryQS.docs[0].data()["qty"] ?? 0),
+        "qty": gameQty.value + (inventroryQS.docs[0].data()["qty"] ?? 0),
         "dateTime": DateTime.now().toIso8601String(),
       }).then((value) {
         Get.back();
@@ -60,9 +72,9 @@ class HomeController extends GetxController {
     } else {
       await users.doc(currentUser?.uid).collection("inventory").add({
         "name": gameData.title,
-        "img": gameData.thumbnail,
-        "cat": gameData.genre,
-        "qty": qty.value,
+        "image": gameData.thumbnail,
+        "category": gameData.genre,
+        "qty": gameQty.value,
         "id": gameData.id,
         "isUsed": false,
         "dateTime": DateTime.now().toIso8601String()
@@ -75,7 +87,6 @@ class HomeController extends GetxController {
     }
   }
 
-  String inId = "";
   getInventoryID(QuerySnapshot querySnapshot) {
     for (var i = 0; i < querySnapshot.docs.length; i++) {
       log("doc:${querySnapshot.docs[i].id}");

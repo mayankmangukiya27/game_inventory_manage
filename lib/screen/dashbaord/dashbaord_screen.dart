@@ -19,14 +19,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: con.currentIndex.value,
-
-        // backgroundColor: colorScheme.surface,
-        // selectedItemColor: colorScheme.onSurface,
-        // unselectedItemColor: colorScheme.onSurface.withOpacity(.60),
-        // selectedLabelStyle: textTheme.caption,
-        // unselectedLabelStyle: textTheme.caption,
         onTap: (value) {
-          // Respond to item press.
           setState(() {
             con.currentIndex.value = value;
           });

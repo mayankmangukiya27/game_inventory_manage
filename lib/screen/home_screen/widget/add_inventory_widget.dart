@@ -70,7 +70,7 @@ class AddInventorySheet extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [BoxShadow(color: AppColors.black.withOpacity(0.25), blurRadius: 4)]),
                     child: Obx(() => Text(
-                          con.qty.value.toString(),
+                          con.gameQty.value.toString(),
                           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
                         )),
                   ),

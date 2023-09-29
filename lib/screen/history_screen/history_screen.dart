@@ -34,18 +34,18 @@ class HistoryScreen extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "20 May 2023, 10:55 PM",
                         style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey),
                       ),
-                      SizedBox(height: 5),
-                      Text(
+                      const SizedBox(height: 5),
+                      const Text(
                         "Game Name",
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                               text: "Qty:",
                               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
                               children: [TextSpan(text: " 2", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.grey))]))

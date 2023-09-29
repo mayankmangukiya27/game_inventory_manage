@@ -50,19 +50,19 @@ class InventoryCard extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
+                  padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         data.name ?? "",
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black, overflow: TextOverflow.ellipsis),
+                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black, overflow: TextOverflow.ellipsis),
                       ),
-                      SizedBox(height: 2),
+                      const SizedBox(height: 2),
                       Text(
                         data.cat ?? "",
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
                       ),
                     ],
                   ),
@@ -78,7 +78,7 @@ class InventoryCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                     color: Colors.white,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 5,
                         spreadRadius: 1,
@@ -95,7 +95,7 @@ class InventoryCard extends StatelessWidget {
             Positioned.fill(
                 child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: ColoredBox(
+              child: const ColoredBox(
                 color: Colors.black54,
                 child: Center(
                     child: Text(

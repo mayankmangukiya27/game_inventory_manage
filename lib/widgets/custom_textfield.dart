@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:game_inventory/constants/app_colors.dart';
-
-import 'package:get/get.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? label, hint;
@@ -52,10 +49,6 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // if (title != null) Text(title ?? "", style: AppTextStyle.style16400.copyWith(color: AppColors.grey5)),
-        // const SizedBox(
-        //   height: 15,
-        // ),
         Focus(
           onFocusChange: onFocusChange,
           child: TextFormField(
@@ -81,11 +74,9 @@ class CustomTextField extends StatelessWidget {
                 enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: Colors.black)),
                 focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: Colors.black)),
                 disabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: Colors.black)),
-                // ),
                 hintText: hint ?? "",
                 prefixIcon: prefixIcon,
                 suffixIcon: suffixIcon,
-                // hintStyle: TextStyle(color: ),
                 floatingLabelBehavior: FloatingLabelBehavior.never),
           ),
         ),

@@ -4,9 +4,21 @@ import 'package:game_inventory/controller/auth_controller.dart';
 import 'package:game_inventory/widgets/custom_textfield.dart';
 import 'package:get/get.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   final authController = Get.put(AuthController());
+
+  @override
+  void initState() {
+    authController.getData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +43,18 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 50),
-            CustomTextField(
-              hint: 'Name',
+            Obx(
+              () => CustomTextField(
+                readOnly: true,
+                controller: TextEditingController(text: authController.currentName.value),
+                hint: 'Name',
+              ),
             ),
             const SizedBox(height: 25),
             CustomTextField(
               hint: 'Email',
+              readOnly: true,
+              controller: TextEditingController(text: authController.currentUser?.email ?? ""),
             ),
             // const SizedBox(height: 35),
             // InkWell(

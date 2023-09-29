@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:game_inventory/constants/app_colors.dart';
 import 'package:game_inventory/constants/images.dart';
 import 'package:game_inventory/controller/all_inventory_controller.dart';
-import 'package:game_inventory/controller/inventory_controller.dart';
 import 'package:game_inventory/model/inventory_model.dart';
 import 'package:get/get.dart';
 
 class ShareInventorySheet extends StatefulWidget {
   final InventoryModel data;
-  ShareInventorySheet({
+  const ShareInventorySheet({
     super.key,
     required this.data,
   });
@@ -19,8 +18,6 @@ class ShareInventorySheet extends StatefulWidget {
 
 class _ShareInventorySheetState extends State<ShareInventorySheet> {
   final con = Get.put(AllInventoryController());
-
-  // final con = Get.put(InventoryController());
 
   @override
   Widget build(BuildContext context) {
@@ -64,14 +61,14 @@ class _ShareInventorySheetState extends State<ShareInventorySheet> {
                     children: [
                       Text(
                         widget.data.name ?? "",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
+                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
                         widget.data.cat ?? "",
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey),
+                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       InkWell(
                         onTap: () {
                           con.useNow(widget.data);
@@ -111,7 +108,7 @@ class _ShareInventorySheetState extends State<ShareInventorySheet> {
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [BoxShadow(color: AppColors.black.withOpacity(0.25), blurRadius: 4)]),
                       child: Obx(() => Text(
-                            con.qty.value.toString(),
+                            con.gameQty.value.toString(),
                             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
                           )),
                     ),
@@ -153,7 +150,7 @@ class _ShareInventorySheetState extends State<ShareInventorySheet> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Text(
-                  "Ttransfer to user",
+                  "Transfer to user",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.white),
                 ),
               ),

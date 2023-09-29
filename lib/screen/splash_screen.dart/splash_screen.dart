@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   check() async {
     final currentUser = await FirebaseAuth.instance.currentUser;
 
-    Get.offAll(() => currentUser?.uid != null ? CustomBottomBar() : LoginScreen());
+    Get.offAll(() => currentUser?.uid != null ? const CustomBottomBar() : LoginScreen());
   }
 
   @override

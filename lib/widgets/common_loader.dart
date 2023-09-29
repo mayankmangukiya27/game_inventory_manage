@@ -38,7 +38,7 @@ class ConmanLoader extends StatelessWidget {
                     width: 40,
                     height: 40,
                     child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Color(0xffC1120E)),
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
                       strokeWidth: 5,
                     ),
                   ),

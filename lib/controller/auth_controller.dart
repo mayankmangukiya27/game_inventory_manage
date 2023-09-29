@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:game_inventory/screen/dashbaord/dashbaord_screen.dart';
 import 'package:game_inventory/screen/login_screen/login_screen.dart';
@@ -13,7 +12,11 @@ class AuthController extends GetxController {
   final emailTc = TextEditingController();
   final passwordTc = TextEditingController();
   final nameTc = TextEditingController();
+
+  RxString currentName = "".obs;
+
   CollectionReference users = FirebaseFirestore.instance.collection('users');
+  final currentUser = FirebaseAuth.instance.currentUser;
 
   login() async {
     final pref = await SharedPreferences.getInstance();
@@ -87,7 +90,7 @@ class AuthController extends GetxController {
           if (credential.user != null) {
             addUser(credential.user!);
             pref.setString('userId', credential.user!.uid);
-            Get.to(() => CustomBottomBar());
+            Get.to(() => const CustomBottomBar());
           }
         } on FirebaseAuthException catch (e) {
           Get.showSnackbar(GetSnackBar(
@@ -114,5 +117,11 @@ class AuthController extends GetxController {
         .set({'full_name': nameTc.text, 'email': user.email, 'id': user.uid})
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));
+  }
+
+  void getData() async {
+    var vari = await FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser?.uid).get();
+
+    currentName.value = vari.data()!['full_name'];
   }
 }
